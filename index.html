@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks</title>
+  <meta
+    name="description"
+    content="Project page draft for Pole-Arina, a privacy-preserving dataset and benchmark for static pole trick recognition from skeletons and dense optical flow."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="static/css/index.css">
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+  <div class="page-backdrop" aria-hidden="true"></div>
+
+  <header class="hero" id="top">
+    <div class="hero__inner container">
+      <nav class="topbar" aria-label="Primary">
+        <a class="topbar__brand" href="#top">Pole-Arina</a>
+        <div class="topbar__links">
+          <a href="#abstract">Abstract</a>
+          <a href="#dataset">Dataset</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#application">Application</a>
+          <a href="#bibtex">BibTeX</a>
+        </div>
+      </nav>
+
+      <div class="hero__layout">
+        <div class="hero__copy">
+          <p class="eyebrow">Project Page Draft - CVSports 2026</p>
+          <h1>Pole-Arina</h1>
+          <p class="hero__subtitle">
+            A privacy-preserving dataset and benchmark for recognizing static pole tricks
+            from skeletons and dense optical flow, with a coaching-oriented analysis prototype.
+          </p>
+          <p class="hero__authors">
+            Add the final author names, affiliations, and external links in
+            <code>docs/index.html</code> before you publish.
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#abstract">Project Overview</a>
+            <a class="button button--secondary" href="#results">Benchmark Results</a>
+            <a class="button button--ghost" href="#bibtex">BibTeX</a>
+            <a class="button button--ghost" href="README.md">Publishing Notes</a>
+          </div>
+
+          <ul class="hero__metrics" aria-label="Project statistics">
+            <li><strong>836</strong><span>clips</span></li>
+            <li><strong>212,574</strong><span>labeled frames</span></li>
+            <li><strong>58</strong><span>participants</span></li>
+            <li><strong>6</strong><span>foundational tricks</span></li>
+            <li><strong>2</strong><span>privacy-preserving modalities</span></li>
+          </ul>
+        </div>
+
+        <figure class="hero__figure glass-card">
+          <button
+            class="media-button"
+            type="button"
+            data-modal-image="static/images/teaser-optical-flow.png"
+            data-modal-alt="Pole-Arina teaser showing skeleton and optical flow representations."
+            data-modal-caption="Pole-Arina replaces identifiable RGB release with derived motion representations such as skeletons and dense optical flow."
+          >
+            <img
+              src="static/images/teaser-optical-flow.png"
+              alt="Pole-Arina teaser showing skeleton and optical flow representations."
+            >
+          </button>
+          <figcaption>
+            The release focuses on privacy-preserving motion cues instead of raw RGB video.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container" id="abstract">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Overview</p>
+        <h2>Abstract</h2>
+      </div>
+
+      <div class="abstract-grid">
+        <article class="glass-card prose-card">
+          <p>
+            Computer vision for sports still lacks datasets and models that target pole sports,
+            despite challenges such as self-occlusion, body inversions, and sustained contact
+            with the pole. Pole-Arina addresses this gap with a curated, privacy-preserving
+            dataset for markerless analysis of static pole tricks.
+          </p>
+          <p>
+            The benchmark contains 836 videos from 58 participants and exposes two
+            appearance-suppressing modalities derived from the recordings: pose skeleton
+            sequences and dense optical flow. Each clip is annotated with both per-video trick
+            labels and per-frame temporal labels, enabling clip-level and frame-wise recognition
+            under strong privacy constraints.
+          </p>
+          <p>
+            On top of the dataset, the paper benchmarks lightweight temporal baselines across
+            both modalities and both supervision granularities, then extends the pipeline toward
+            interpretable, coaching-oriented feedback through a geometric scoring module and a
+            user study.
+          </p>
+        </article>
+
+        <aside class="callout-stack">
+          <article class="glass-card highlight-card">
+            <p class="highlight-card__kicker">Why it matters</p>
+            <h3>Privacy first</h3>
+            <p>
+              The project avoids releasing identifiable RGB videos and instead centers the
+              benchmark on motion representations that preserve useful kinematics.
+            </p>
+          </article>
+          <article class="glass-card highlight-card">
+            <p class="highlight-card__kicker">What is benchmarked</p>
+            <h3>Four recognition settings</h3>
+            <p>
+              Skeleton and optical-flow baselines are evaluated for both per-video recognition
+              and per-frame classification.
+            </p>
+          </article>
+          <article class="glass-card highlight-card">
+            <p class="highlight-card__kicker">Beyond recognition</p>
+            <h3>Coaching-oriented analysis</h3>
+            <p>
+              A transparent geometric scoring module turns end-pose measurements into
+              interpretable feedback rather than a black-box score.
+            </p>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="dataset">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-heading__eyebrow">Dataset</p>
+          <h2>Privacy-Preserving Benchmark Design</h2>
+        </div>
+
+        <div class="stats-band">
+          <article class="stat-card glass-card">
+            <span class="stat-card__label">Modalities</span>
+            <strong>Skeletons + Dense Optical Flow</strong>
+            <p>Two complementary appearance-suppressing views of each clip.</p>
+          </article>
+          <article class="stat-card glass-card">
+            <span class="stat-card__label">Labels</span>
+            <strong>Per-video + Per-frame</strong>
+            <p>Clip identities and temporal states are both available for evaluation.</p>
+          </article>
+          <article class="stat-card glass-card">
+            <span class="stat-card__label">Coverage</span>
+            <strong>Beginner to Intermediate</strong>
+            <p>Six foundational static tricks across upright and inverted regimes.</p>
+          </article>
+        </div>
+
+        <div class="figure-grid">
+          <figure class="glass-card figure-card">
+            <button
+              class="media-button"
+              type="button"
+              data-modal-image="static/images/demographics.png"
+              data-modal-alt="Dataset demographics visualization."
+              data-modal-caption="Participant composition across gender and dance experience."
+            >
+              <img src="static/images/demographics.png" alt="Dataset demographics visualization." loading="lazy">
+            </button>
+            <figcaption>Participant composition across gender and dance experience.</figcaption>
+          </figure>
+
+          <figure class="glass-card figure-card">
+            <button
+              class="media-button"
+              type="button"
+              data-modal-image="static/images/videos-per-trick.png"
+              data-modal-alt="Bar chart of videos per trick."
+              data-modal-caption="Video counts across the six selected tricks."
+            >
+              <img src="static/images/videos-per-trick.png" alt="Bar chart of videos per trick." loading="lazy">
+            </button>
+            <figcaption>Balanced enough to benchmark, challenging enough to leave room for improvement.</figcaption>
+          </figure>
+        </div>
+
+        <div class="section-heading section-heading--compact">
+          <p class="section-heading__eyebrow">Trick Families</p>
+          <h3>Six foundational static pole tricks</h3>
+        </div>
+
+        <div class="family-grid">
+          <figure class="glass-card figure-card">
+            <button
+              class="media-button"
+              type="button"
+              data-modal-image="static/images/tricks-upright.png"
+              data-modal-alt="Upright trick progressions."
+              data-modal-caption="Upright tricks: Layout, Pin-Up, and Wrist Seat."
+            >
+              <img src="static/images/tricks-upright.png" alt="Upright trick progressions." loading="lazy">
+            </button>
+            <figcaption>Upright: Layout, Pin-Up, Wrist Seat.</figcaption>
+          </figure>
+
+          <figure class="glass-card figure-card">
+            <button
+              class="media-button"
+              type="button"
+              data-modal-image="static/images/tricks-invert.png"
+              data-modal-alt="Inverted trick progressions."
+              data-modal-caption="Inverted tricks: Straddle Invert, Gemini, and Crucifix."
+            >
+              <img src="static/images/tricks-invert.png" alt="Inverted trick progressions." loading="lazy">
+            </button>
+            <figcaption>Inverted: Straddle Invert, Gemini, Crucifix.</figcaption>
+          </figure>
+        </div>
+
+        <div class="trick-grid" aria-label="Trick gallery">
+          <article class="trick-card glass-card">
+            <img src="static/images/thumb-layout.jpg" alt="Layout trick thumbnail." loading="lazy">
+            <div>
+              <h3>Layout</h3>
+              <p>Upright</p>
+            </div>
+          </article>
+          <article class="trick-card glass-card">
+            <img src="static/images/thumb-pin-up.jpg" alt="Pin-Up trick thumbnail." loading="lazy">
+            <div>
+              <h3>Pin-Up</h3>
+              <p>Upright</p>
+            </div>
+          </article>
+          <article class="trick-card glass-card">
+            <img src="static/images/thumb-wrist-seat.jpg" alt="Wrist Seat trick thumbnail." loading="lazy">
+            <div>
+              <h3>Wrist Seat</h3>
+              <p>Upright</p>
+            </div>
+          </article>
+          <article class="trick-card glass-card">
+            <img src="static/images/thumb-straddle-invert.jpg" alt="Straddle Invert trick thumbnail." loading="lazy">
+            <div>
+              <h3>Straddle Invert</h3>
+              <p>Inverted</p>
+            </div>
+          </article>
+          <article class="trick-card glass-card">
+            <img src="static/images/thumb-gemini.jpg" alt="Gemini trick thumbnail." loading="lazy">
+            <div>
+              <h3>Gemini</h3>
+              <p>Inverted</p>
+            </div>
+          </article>
+          <article class="trick-card glass-card">
+            <img src="static/images/thumb-crucifix.jpg" alt="Crucifix trick thumbnail." loading="lazy">
+            <div>
+              <h3>Crucifix</h3>
+              <p>Inverted</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="method">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Method</p>
+        <h2>From Video to Recognition and Feedback</h2>
+      </div>
+
+      <div class="method-grid">
+        <figure class="glass-card figure-card figure-card--wide">
+          <button
+            class="media-button"
+            type="button"
+            data-modal-image="static/images/overview-pipeline.png"
+            data-modal-alt="Overview of the Pole-Arina method pipeline."
+            data-modal-caption="Video input is transformed into privacy-preserving features, aligned labels, temporal models, and interpretable feedback."
+          >
+            <img src="static/images/overview-pipeline.png" alt="Overview of the Pole-Arina method pipeline." loading="lazy">
+          </button>
+          <figcaption>From input video to feature extraction, recognition, and coaching-style analysis.</figcaption>
+        </figure>
+
+        <div class="method-copy">
+          <article class="glass-card prose-card">
+            <p>
+              The benchmark starts from recorded training clips but releases only derived,
+              privacy-preserving features. Body skeletons capture structured pose and confidence
+              over time, while dense optical flow emphasizes motion without preserving identity.
+            </p>
+            <p>
+              Lightweight GRU-based temporal models provide a consistent baseline across
+              modalities and label granularities. The same pipeline also supports a downstream
+              coaching prototype, where predicted trick labels and end-pose geometry become
+              explicit feedback rules.
+            </p>
+          </article>
+
+          <div class="process-grid">
+            <article class="process-card glass-card">
+              <span>01</span>
+              <h3>Feature extraction</h3>
+              <p>Pose skeletons and optical flow replace shareable RGB.</p>
+            </article>
+            <article class="process-card glass-card">
+              <span>02</span>
+              <h3>Temporal recognition</h3>
+              <p>Per-video and per-frame baselines model both coarse and fine structure.</p>
+            </article>
+            <article class="process-card glass-card">
+              <span>03</span>
+              <h3>Geometric scoring</h3>
+              <p>Five to seven trick-specific rules turn poses into actionable feedback.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="results">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-heading__eyebrow">Results</p>
+          <h2>Benchmark Snapshot</h2>
+        </div>
+
+        <div class="results-cards">
+          <article class="metric-card glass-card">
+            <span class="metric-card__label">Skeleton - Per-video</span>
+            <strong>91.26%</strong>
+            <p>Accuracy</p>
+          </article>
+          <article class="metric-card glass-card">
+            <span class="metric-card__label">Optical Flow - Per-video</span>
+            <strong>66.67%</strong>
+            <p>Accuracy</p>
+          </article>
+          <article class="metric-card glass-card">
+            <span class="metric-card__label">Skeleton - Per-frame</span>
+            <strong>86.99%</strong>
+            <p>Accuracy / 77.71 Macro F1</p>
+          </article>
+          <article class="metric-card glass-card">
+            <span class="metric-card__label">Optical Flow - Per-frame</span>
+            <strong>81.23%</strong>
+            <p>Accuracy / 45.84 Macro F1</p>
+          </article>
+        </div>
+
+        <div class="results-grid">
+          <article class="glass-card prose-card">
+            <h3>Key takeaways</h3>
+            <p>
+              Skeletons provide a strong inductive bias for pose-centric recognition and clearly
+              outperform optical flow at the clip level. Frame-wise recognition remains harder,
+              especially under label imbalance, but the benchmark still supports meaningful
+              temporal understanding from privacy-preserving motion alone.
+            </p>
+            <p>
+              The paper highlights especially strong skeleton-based performance for several trick
+              classes, while optical flow remains useful for dominant support states such as
+              <code>floor</code> and <code>on_pole</code>.
+            </p>
+          </article>
+
+          <article class="glass-card results-table-card">
+            <h3>Summary table</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Modality</th>
+                    <th>Task</th>
+                    <th>Acc. (%)</th>
+                    <th>Macro F1 (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Skeleton</td>
+                    <td>Per-video</td>
+                    <td>91.26</td>
+                    <td>91.50</td>
+                  </tr>
+                  <tr>
+                    <td>Optical Flow</td>
+                    <td>Per-video</td>
+                    <td>66.67</td>
+                    <td>67.11</td>
+                  </tr>
+                  <tr>
+                    <td>Skeleton</td>
+                    <td>Per-frame</td>
+                    <td>86.99</td>
+                    <td>77.71</td>
+                  </tr>
+                  <tr>
+                    <td>Optical Flow</td>
+                    <td>Per-frame</td>
+                    <td>81.23</td>
+                    <td>45.84</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="application">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Application</p>
+        <h2>Coaching-Oriented Feedback Prototype</h2>
+      </div>
+
+      <div class="application-grid">
+        <figure class="glass-card figure-card figure-card--tall">
+          <button
+            class="media-button"
+            type="button"
+            data-modal-image="static/images/coaching-interface.png"
+            data-modal-alt="Coaching interface screenshot."
+            data-modal-caption="The prototype combines prediction, overlays, and per-rule feedback inside a coaching-style interface."
+          >
+            <img src="static/images/coaching-interface.png" alt="Coaching interface screenshot." loading="lazy">
+          </button>
+          <figcaption>The prototype surfaces overlay controls, rule breakdowns, and end-pose assessment.</figcaption>
+        </figure>
+
+        <div class="application-copy">
+          <article class="glass-card prose-card">
+            <p>
+              Pole-Arina is not only a recognition benchmark. The paper also demonstrates a
+              practical downstream workflow where the predicted trick and end-pose geometry feed
+              into a coaching-style interface for structured review.
+            </p>
+            <p>
+              In the reported between-subjects study, the experimental condition achieved a
+              higher SUS score than simple smartphone self-review
+              (<strong>95.44 +/- 4.07</strong> vs. <strong>86.41 +/- 11.14</strong>,
+              <strong>p = .020</strong>).
+            </p>
+          </article>
+
+          <div class="stats-band stats-band--application">
+            <article class="stat-card glass-card">
+              <span class="stat-card__label">Interpretability</span>
+              <strong>5-7 rules per trick</strong>
+              <p>Angles, alignments, and joint proximities stay human-readable.</p>
+            </article>
+            <article class="stat-card glass-card">
+              <span class="stat-card__label">User study</span>
+              <strong>33 participants</strong>
+              <p>17 experimental and 16 control participants in the reported evaluation.</p>
+            </article>
+            <article class="stat-card glass-card">
+              <span class="stat-card__label">Workflow</span>
+              <strong>Upload -&gt; Predict -&gt; Review</strong>
+              <p>A lightweight path from training video to actionable motion feedback.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="bibtex">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-heading__eyebrow">Citation</p>
+          <h2>BibTeX</h2>
+        </div>
+
+        <article class="glass-card bibtex-card">
+          <div class="bibtex-card__header">
+            <p>Update the author list and venue fields before public release.</p>
+            <button class="button button--secondary button--small" type="button" data-copy-bibtex>
+              Copy BibTeX
+            </button>
+          </div>
+          <pre id="bibtex-block"><code>@inproceedings{polearina2026,
+  title     = {Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks},
+  author    = {Replace with final author list},
+  booktitle = {CVPR Workshops},
+  year      = {2026}
+}</code></pre>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>
+        This first-pass project page was assembled from the attached TeX project assets and text.
+      </p>
+      <p>
+        Before publishing, replace placeholders in <code>docs/index.html</code> and follow the
+        deployment steps in <a href="README.md">docs/README.md</a>.
+      </p>
+    </div>
+  </footer>
+
+  <dialog class="media-modal" aria-label="Expanded figure view">
+    <button class="media-modal__close" type="button" aria-label="Close figure view">Close</button>
+    <img src="" alt="">
+    <p class="media-modal__caption"></p>
+  </dialog>
+</body>
+</html>
