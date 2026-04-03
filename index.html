@@ -2,522 +2,305 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta
     name="description"
     content="Pole-Arina is a privacy-preserving dataset and benchmark for static pole tricks using skeletons and dense optical flow."
   >
-  <meta property="og:title" content="Pole-Arina">
-  <meta
-    property="og:description"
-    content="A privacy-preserving dataset and benchmark for static pole tricks."
-  >
-  <meta property="og:image" content="static/images/teaser-optical-flow.png">
-  <meta property="og:type" content="website">
+  <meta name="keywords" content="Pole-Arina, pole dance, action recognition, privacy-preserving vision, skeletons, optical flow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks</title>
 
-  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
-  <link
-    href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-    rel="stylesheet"
-  >
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-  >
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css"
-  >
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  >
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-  >
-  <link rel="stylesheet" href="static/css/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
 
-  <script
-    defer
-    src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.min.js"
-  ></script>
-  <script defer src="static/js/index.js"></script>
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#top">
+        <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Sections
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="#abstract">
+            Abstract
+          </a>
+          <a class="navbar-item" href="#results-carousel">
+            Figures
+          </a>
+          <a class="navbar-item" href="#BibTeX">
+            BibTeX
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero" id="top">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Diana Marin,</span>
+            <span class="author-block">Katharina Scheucher,</span>
+            <span class="author-block">Peter Kán</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Technische Universität Wien, Austria</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./static/pdfs/pole-arina-paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/di-marin/pole-arina/releases"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/di-marin/pole-arina"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser-optical-flow.png"
+           alt="Pole-Arina teaser showing skeletons and dense optical flow."
+           class="teaser-media">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Pole-Arina</span> replaces identifiable RGB with privacy-preserving motion representations. We extract 2D pose skeletons and dense optical flow, enabling clip-level trick recognition, frame-wise phase understanding, and coaching-oriented analysis for static pole tricks under strong privacy constraints.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-figure">
+          <img src="./static/images/overview-pipeline.png"
+               alt="Overview pipeline figure.">
+          <p class="carousel-caption">Overview of the Pole-Arina pipeline from input video to privacy-preserving features, trick recognition, and coaching-oriented feedback.</p>
+        </div>
+        <div class="item item-figure">
+          <img src="./static/images/tricks-upright.png"
+               alt="Upright tricks figure.">
+          <p class="carousel-caption">Upright tricks: Layout, Pin-Up, and Wrist Seat.</p>
+        </div>
+        <div class="item item-figure">
+          <img src="./static/images/tricks-invert.png"
+               alt="Inverted tricks figure.">
+          <p class="carousel-caption">Inverted tricks: Straddle Invert, Gemini, and Crucifix.</p>
+        </div>
+        <div class="item item-figure">
+          <img src="./static/images/demographics.png"
+               alt="Participant demographics figure.">
+          <p class="carousel-caption">Participant composition across gender and dance experience.</p>
+        </div>
+        <div class="item item-figure">
+          <img src="./static/images/videos-per-trick.png"
+               alt="Videos per trick figure.">
+          <p class="carousel-caption">Video counts across the six selected tricks in the benchmark.</p>
+        </div>
+        <div class="item item-figure">
+          <img src="./static/images/coaching-interface.png"
+               alt="Coaching interface figure.">
+          <p class="carousel-caption">The downstream coaching interface combines overlay controls and per-rule feedback.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered" id="abstract">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Computer vision for sports lacks datasets and models that target pole sports, an activity marked by self-occlusion, body inversions, and sustained contact with the pole. We address this gap by introducing <b>Pole-Arina</b>, a curated, privacy-preserving dataset for markerless analysis of static pole tricks.
+          </p>
+          <p>
+            The collection comprises 836 videos from 58 participants and provides two appearance-suppressing modalities derived from the recordings: pose skeleton sequences (2D joints) and dense optical flow. We annotate each clip with both per-video trick labels and per-frame labels that capture temporal structure, enabling evaluation of clip-level and frame-wise recognition under privacy constraints.
+          </p>
+          <p>
+            As reference baselines, we benchmark lightweight temporal models across all benchmark settings and analyze common confusions and imbalance effects. In addition, we provide a geometry-aware analysis module that measures trick-specific body orientation, joint alignments, and proximities to produce interpretable overlays and actionable feedback.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper figure. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="publication-video">
+          <img src="./static/images/overview-pipeline.png"
+               alt="Pole-Arina overview pipeline figure.">
+        </div>
+      </div>
+    </div>
+    <!--/ Paper figure. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Dataset summary. -->
+      <div class="container is-max-desktop content">
+        <div class="content">
+          <h2 class="title is-3">Dataset Summary</h2>
+          <p>
+            Pole-Arina contains 836 clips spanning six foundational static pole tricks, performed
+            by volunteers with varied skill levels and including both successful and failed
+            attempts, totaling 212,574 labeled frames.
+          </p>
+          <img src="./static/images/videos-per-trick.png"
+               alt="Pole-Arina videos per trick figure."
+               class="section-media">
+        </div>
+      </div>
+      <!--/ Dataset summary. -->
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Coaching case study. -->
+      <div class="container is-max-desktop content">
+        <h2 class="title is-3">Coaching Case Study</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              Beyond recognition, the paper evaluates a practical coaching-oriented prototype that
+              predicts the trick label, scores the end pose with geometric rules, and returns
+              structured visual feedback through a web interface.
+            </p>
+            <img src="./static/images/coaching-interface.png"
+                 alt="Pole-Arina coaching interface."
+                 class="section-media">
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Coaching case study. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{polearina2026,
+  title     = {Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks},
+  author    = {First Author and Second Author},
+  booktitle = {CVSports Workshop},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/pdfs/pole-arina-paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link external-link" href="https://github.com/di-marin/pole-arina">
+        <i class="fab fa-github"></i>
       </a>
     </div>
-
-    <div id="navbarMenu" class="navbar-menu">
-      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-        <a class="navbar-item" href="#top">
-          <span class="icon">
-            <i class="fas fa-home"></i>
-          </span>
-        </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Sections</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#abstract">Abstract</a>
-            <a class="navbar-item" href="#dataset">Dataset</a>
-            <a class="navbar-item" href="#pipeline">Pipeline</a>
-            <a class="navbar-item" href="#results">Results</a>
-            <a class="navbar-item" href="#application">Application</a>
-            <a class="navbar-item" href="#bibtex">BibTeX</a>
-          </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies project page template</a>.
+          </p>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+</footer>
 
-  <section class="hero" id="top">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">
-              Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks
-            </h1>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">Replace this line with the final author list before publication.</span>
-            </div>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">CVSports 2026 workshop submission materials adapted into a Nerfies-style project page.</span>
-            </div>
-
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <span class="link-block">
-                  <a href="#abstract" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-align-left"></i>
-                    </span>
-                    <span>Abstract</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="#dataset" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="far fa-images"></i>
-                    </span>
-                    <span>Dataset</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="#results" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-chart-bar"></i>
-                    </span>
-                    <span>Results</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-book"></i>
-                    </span>
-                    <span>BibTeX</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="README.md" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-rocket"></i>
-                    </span>
-                    <span>Publish</span>
-                  </a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img
-          src="static/images/teaser-optical-flow.png"
-          alt="Pole-Arina teaser showing skeleton and dense optical flow representations."
-          class="teaser-media"
-        >
-        <h2 class="subtitle has-text-centered">
-          <span class="dnerf">Pole-Arina</span> suppresses appearance and identity cues by releasing skeletons and dense optical flow instead of RGB video, while still enabling fine-grained trick recognition and coaching-oriented analysis.
-        </h2>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="abstract">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              Computer vision for sports lacks datasets and models that target pole sports, an
-              activity marked by self-occlusion, body inversions, and sustained contact with the
-              pole. Pole-Arina addresses this gap with a curated, privacy-preserving dataset for
-              markerless analysis of static pole tricks.
-            </p>
-            <p>
-              The collection comprises 836 videos from 58 participants and provides two
-              appearance-suppressing modalities derived from the recordings: pose skeleton
-              sequences and dense optical flow. Each clip is annotated with both per-video trick
-              labels and per-frame labels that capture temporal structure, enabling evaluation of
-              clip-level and frame-wise recognition under privacy constraints.
-            </p>
-            <p>
-              On top of the dataset, the paper benchmarks lightweight temporal models across all
-              benchmark settings and extends the pipeline toward interpretable, coaching-oriented
-              feedback with a geometric scoring module and a user study.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="hero is-light is-small" id="dataset">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-3 has-text-centered">Dataset Snapshot</h2>
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item">
-            <img src="static/images/tricks-upright.png" alt="Upright pole-trick progressions.">
-            <p class="carousel-caption">
-              Upright tricks: Layout, Pin-Up, and Wrist Seat.
-            </p>
-          </div>
-          <div class="item">
-            <img src="static/images/tricks-invert.png" alt="Inverted pole-trick progressions.">
-            <p class="carousel-caption">
-              Inverted tricks: Straddle Invert, Gemini, and Crucifix.
-            </p>
-          </div>
-          <div class="item">
-            <img src="static/images/demographics.png" alt="Participant demographics figure.">
-            <p class="carousel-caption">
-              The dataset includes participants with varied gender and dance experience.
-            </p>
-          </div>
-          <div class="item">
-            <img src="static/images/videos-per-trick.png" alt="Video counts per trick.">
-            <p class="carousel-caption">
-              836 clips across six foundational static pole tricks.
-            </p>
-          </div>
-          <div class="item">
-            <img src="static/images/coaching-interface.png" alt="Coaching application interface.">
-            <p class="carousel-caption">
-              The benchmark also supports a coaching-oriented downstream application.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="pipeline">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Pipeline</h2>
-          <div class="columns is-vcentered">
-            <div class="column is-7">
-              <img
-                src="static/images/overview-pipeline.png"
-                alt="Overview of the Pole-Arina pipeline."
-                class="section-image"
-              >
-              <p class="figure-caption">
-                From video input to feature extraction, trick recognition, and interpretable pose-quality feedback.
-              </p>
-            </div>
-            <div class="column is-5">
-              <div class="content has-text-justified">
-                <p>
-                  Pole-Arina converts recorded training clips into stable, privacy-preserving
-                  representations for learning and evaluation. Instead of releasing raw RGB video,
-                  the benchmark provides body skeletons and dense optical flow.
-                </p>
-                <p>
-                  The baseline models use lightweight GRU-based temporal architectures for both
-                  per-video recognition and per-frame classification. A geometric scoring module
-                  then turns end-pose structure into interpretable feedback rules that align with
-                  coaching practice.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="columns is-multiline has-text-centered quick-stats">
-            <div class="column is-4-desktop is-12-tablet">
-              <div class="box stat-box">
-                <p class="stat-value">836</p>
-                <p class="stat-label">clips</p>
-                <p class="stat-note">58 participants and 212,574 labeled frames.</p>
-              </div>
-            </div>
-            <div class="column is-4-desktop is-12-tablet">
-              <div class="box stat-box">
-                <p class="stat-value">2</p>
-                <p class="stat-label">modalities</p>
-                <p class="stat-note">Skeleton sequences and dense optical flow.</p>
-              </div>
-            </div>
-            <div class="column is-4-desktop is-12-tablet">
-              <div class="box stat-box">
-                <p class="stat-value">4</p>
-                <p class="stat-label">benchmark settings</p>
-                <p class="stat-note">Skeleton/flow crossed with video/frame supervision.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="results">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Benchmark Results</h2>
-          <div class="content has-text-justified">
-            <p>
-              The benchmark exposes a clear gap between the two privacy-preserving modalities.
-              Skeletons provide a strong inductive bias for pose-centric recognition, while optical
-              flow remains a more challenging appearance-suppressed setting with headroom for
-              stronger temporal modeling.
-            </p>
-          </div>
-
-          <div class="columns is-multiline has-text-centered">
-            <div class="column is-3-desktop is-6-tablet">
-              <div class="box metric-box">
-                <p class="metric-value">91.26%</p>
-                <p class="metric-label">Skeleton per-video accuracy</p>
-              </div>
-            </div>
-            <div class="column is-3-desktop is-6-tablet">
-              <div class="box metric-box">
-                <p class="metric-value">66.67%</p>
-                <p class="metric-label">Flow per-video accuracy</p>
-              </div>
-            </div>
-            <div class="column is-3-desktop is-6-tablet">
-              <div class="box metric-box">
-                <p class="metric-value">86.99%</p>
-                <p class="metric-label">Skeleton per-frame accuracy</p>
-                <p class="metric-subnote">77.71 macro F1</p>
-              </div>
-            </div>
-            <div class="column is-3-desktop is-6-tablet">
-              <div class="box metric-box">
-                <p class="metric-value">81.23%</p>
-                <p class="metric-label">Flow per-frame accuracy</p>
-                <p class="metric-subnote">45.84 macro F1</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="columns is-vcentered">
-            <div class="column is-6">
-              <div class="content has-text-justified">
-                <h3 class="title is-4">What stands out</h3>
-                <ul>
-                  <li>Clip-level recognition is already strong for skeleton sequences.</li>
-                  <li>Frame-wise accuracy is inflated by label imbalance, so macro F1 matters.</li>
-                  <li>Optical flow preserves privacy while remaining meaningfully informative.</li>
-                  <li>The benchmark leaves clear room for better minority-class recognition.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="column is-6">
-              <div class="box summary-box">
-                <h3 class="title is-5">Benchmark summary</h3>
-                <table class="table is-fullwidth is-striped">
-                  <thead>
-                    <tr>
-                      <th>Modality</th>
-                      <th>Task</th>
-                      <th>Acc.</th>
-                      <th>Macro F1</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Skeleton</td>
-                      <td>Per-video</td>
-                      <td>91.26</td>
-                      <td>91.50</td>
-                    </tr>
-                    <tr>
-                      <td>Optical Flow</td>
-                      <td>Per-video</td>
-                      <td>66.67</td>
-                      <td>67.11</td>
-                    </tr>
-                    <tr>
-                      <td>Skeleton</td>
-                      <td>Per-frame</td>
-                      <td>86.99</td>
-                      <td>77.71</td>
-                    </tr>
-                    <tr>
-                      <td>Optical Flow</td>
-                      <td>Per-frame</td>
-                      <td>81.23</td>
-                      <td>45.84</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="application">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Coaching Application</h2>
-          <div class="columns is-vcentered">
-            <div class="column is-7">
-              <img
-                src="static/images/coaching-interface.png"
-                alt="Pole-Arina coaching interface."
-                class="section-image"
-              >
-              <p class="figure-caption">
-                The prototype combines trick recognition, overlay controls, and per-rule feedback.
-              </p>
-            </div>
-            <div class="column is-5">
-              <div class="content has-text-justified">
-                <p>
-                  Beyond recognition, Pole-Arina studies a practical downstream workflow for
-                  static pole coaching. The system predicts the performed trick, extracts an
-                  end-pose frame, and scores technique using interpretable geometric rules.
-                </p>
-                <p>
-                  In the reported user study, the experimental Pole-Arina feedback condition
-                  achieved a higher SUS score than smartphone self-review:
-                  <strong>95.44 +/- 4.07</strong> vs. <strong>86.41 +/- 11.14</strong>,
-                  with <strong>p = .020</strong>.
-                </p>
-              </div>
-              <div class="box stat-box">
-                <p class="stat-value">33</p>
-                <p class="stat-label">user-study participants</p>
-                <p class="stat-note">17 experimental and 16 control participants.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="columns is-multiline trick-gallery">
-            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-              <div class="trick-card">
-                <img src="static/images/thumb-layout.jpg" alt="Layout thumbnail.">
-                <p>Layout</p>
-              </div>
-            </div>
-            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-              <div class="trick-card">
-                <img src="static/images/thumb-pin-up.jpg" alt="Pin-Up thumbnail.">
-                <p>Pin-Up</p>
-              </div>
-            </div>
-            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-              <div class="trick-card">
-                <img src="static/images/thumb-wrist-seat.jpg" alt="Wrist Seat thumbnail.">
-                <p>Wrist Seat</p>
-              </div>
-            </div>
-            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-              <div class="trick-card">
-                <img src="static/images/thumb-straddle-invert.jpg" alt="Straddle Invert thumbnail.">
-                <p>Straddle Invert</p>
-              </div>
-            </div>
-            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-              <div class="trick-card">
-                <img src="static/images/thumb-gemini.jpg" alt="Gemini thumbnail.">
-                <p>Gemini</p>
-              </div>
-            </div>
-            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-              <div class="trick-card">
-                <img src="static/images/thumb-crucifix.jpg" alt="Crucifix thumbnail.">
-                <p>Crucifix</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="bibtex">
-    <div class="container is-max-desktop content">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">BibTeX</h2>
-          <pre><code>@inproceedings{polearina2026,
-  title     = {Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks},
-  author    = {Replace with final author list},
-  booktitle = {CVPR Workshops},
-  year      = {2026}
-}</code></pre>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <a class="icon-link" href="#top">
-          <i class="fas fa-arrow-up"></i>
-        </a>
-        <a class="icon-link" href="https://github.com/nerfies/nerfies.github.io">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
-            <p>
-              This page is adapted from the
-              <a href="https://github.com/nerfies/nerfies.github.io">Nerfies website template</a>.
-              Replace the placeholder author and link fields before public release.
-            </p>
-            <p>
-              Publishing notes for this repo are in <a href="README.md">docs/README.md</a>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>

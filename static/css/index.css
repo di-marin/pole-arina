@@ -2,23 +2,21 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-.navbar {
-  border-bottom: 1px solid #ededed;
-}
 
 .footer .icon-link {
-  font-size: 25px;
-  color: #000;
+    font-size: 25px;
+    color: #000;
 }
 
 .link-block a {
-  margin-top: 5px;
-  margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .dnerf {
   font-variant: small-caps;
 }
+
 
 .teaser .hero-body {
   padding-top: 0;
@@ -26,56 +24,105 @@ body {
 }
 
 .teaser {
-  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .teaser-media {
   display: block;
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
 }
 
 .publication-title {
-  font-family: 'Google Sans', 'Noto Sans', sans-serif;
-  line-height: 1.15;
+    font-family: 'Google Sans', sans-serif;
 }
 
 .publication-authors {
-  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
 }
 
 .publication-authors a {
-  color: hsl(204, 86%, 53%) !important;
+   color: hsl(204, 86%, 53%) !important;
 }
 
 .publication-authors a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .author-block {
   display: inline-block;
 }
 
-.publication-links {
-  margin-top: 1rem;
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
 }
 
 .publication-video {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-  border-radius: 10px !important;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
 }
 
 .publication-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-video img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #fff;
+}
+
+.publication-body img {
 }
 
 .results-carousel {
@@ -88,100 +135,58 @@ body {
   border: 1px solid #bbb;
   border-radius: 10px;
   padding: 0;
-  background: #fff;
+  font-size: 0;
 }
 
-.results-carousel .item img {
+.results-carousel video {
+  margin: 0;
+}
+
+.results-carousel img {
   display: block;
   width: 100%;
 }
 
 .carousel-caption {
   margin: 0;
-  padding: 0.85rem 1rem 1rem;
+  padding: 0.9rem 1rem 1rem;
+  color: #555;
   font-size: 0.95rem;
-  color: #4a4a4a;
   text-align: center;
 }
 
-.section-image {
+.section-media {
   display: block;
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 10px;
 }
 
-.figure-caption {
-  margin-top: 0.75rem;
-  color: #666;
-  font-size: 0.95rem;
-  text-align: center;
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
 }
 
-.quick-stats {
-  margin-top: 1rem;
-}
-
-.stat-box,
-.metric-box,
-.summary-box {
-  height: 100%;
-}
-
-.stat-value,
-.metric-value {
-  margin-bottom: 0.2rem;
-  font-family: 'Google Sans', 'Noto Sans', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: hsl(204, 86%, 53%);
-}
-
-.stat-label,
-.metric-label {
-  margin-bottom: 0.4rem;
-  font-weight: 700;
-}
-
-.stat-note,
-.metric-subnote {
-  margin-bottom: 0;
-  color: #666;
-  font-size: 0.95rem;
-}
-
-.summary-box table {
-  margin-bottom: 0;
-}
-
-.trick-gallery {
-  margin-top: 1rem;
-}
-
-.trick-card {
-  text-align: center;
-}
-
-.trick-card img {
-  display: block;
+.interpolation-panel .interpolation-image {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-.trick-card p {
-  margin-top: 0.6rem;
-  font-weight: 600;
+.interpolation-video-column {
 }
 
-pre {
-  border-radius: 10px;
+.interpolation-panel .slider {
+  margin: 0 !important;
 }
 
-@media screen and (max-width: 768px) {
-  .publication-title {
-    font-size: 2rem !important;
-  }
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
 }
