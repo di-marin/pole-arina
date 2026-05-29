@@ -29,7 +29,7 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks</h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Diana Marin,</span>
+            <span class="author-block"><a href="https://di-marin.github.io/">Diana Marin</a>,</span>
             <span class="author-block">Katharina Scheucher,</span>
             <span class="author-block">Peter Kán</span>
           </div>
@@ -163,7 +163,7 @@
       </p>
     </div>
 
-    <img src="./static/images/overview-pipeline.png"
+    <img src="./static/images/pipeline.png"
          alt="Overview of the Pole-Arina processing and model pipeline."
          class="section-media model-overview">
 
@@ -176,7 +176,7 @@
               Per-frame models predict temporal labels at each point in a clip, supporting fine-grained phase analysis and coaching-oriented feedback.
             </p>
           </div>
-          <img src="./static/images/coaching-interface.png"
+          <img src="./static/images/per_frame.png"
                alt="Frame-level coaching interface with pose quality overlays."
                class="section-media tiny-model-media">
         </div>
@@ -190,22 +190,11 @@
               Per-video models assign one trick label to the full clip by aggregating evidence across the complete motion sequence.
             </p>
           </div>
-          <img src="./static/images/videos-per-trick.png"
+          <img src="./static/images/per_video.png"
                alt="Bar chart showing the number of videos for each pole trick class."
                class="section-media tiny-model-media">
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section paper-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Conclusion</h2>
-    <div class="section-text-box content has-text-justified">
-      <p>
-        Pole-Arina introduces a focused benchmark for pole sports that keeps privacy central while preserving the motion cues needed for recognition and feedback. The dataset, baselines, and analysis tools are intended to support future work on interpretable, privacy-aware sports vision.
-      </p>
     </div>
   </div>
 </section>
