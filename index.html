@@ -10,62 +10,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="./static/js/bulma-carousel.min.js"></script>
+  <script defer src="./static/js/bulma-slider.min.js"></script>
+  <script defer src="./static/js/index.js"></script>
 </head>
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="#top">
-        <span class="icon">
-          <i class="fas fa-home"></i>
-        </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Sections
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="#abstract">
-            Abstract
-          </a>
-          <a class="navbar-item" href="#results-carousel">
-            Figures
-          </a>
-          <a class="navbar-item" href="#BibTeX">
-            BibTeX
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
 
 <section class="hero" id="top">
   <div class="hero-body">
@@ -155,9 +110,105 @@
       </div>
     </div>
     <!--/ Abstract. -->
+  </div>
+</section>
 
-    
+<section class="section paper-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Dataset</h2>
+    <div class="section-text-box content has-text-justified">
+      <p>
+        Pole-Arina collects static pole trick videos and releases privacy-preserving representations for analysis. Instead of relying on identifiable RGB frames, the dataset supports two motion-focused views: 2D pose skeletons and dense optical flow.
+      </p>
+    </div>
 
+    <div class="columns is-variable is-5 feature-grid">
+      <div class="column">
+        <div class="feature-panel">
+          <h3 class="title is-4 feature-title">Skeleton</h3>
+          <div class="section-text-box content">
+            <p>
+              Skeleton sequences encode body configuration over time with 2D joints, making the trick structure visible while suppressing appearance details.
+            </p>
+          </div>
+          <img src="./static/images/skeleton.gif"
+               alt="Animated preview of skeleton-based pole trick representations."
+               class="section-media feature-media">
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="feature-panel">
+          <h3 class="title is-4 feature-title">Optical Flow</h3>
+          <div class="section-text-box content">
+            <p>
+              Optical flow captures dense motion patterns between frames, highlighting the direction and intensity of movement without preserving raw video appearance.
+            </p>
+          </div>
+          <img src="./static/images/optical_flow.gif"
+               alt="Animated preview of dense optical flow representations."
+               class="section-media feature-media">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Models</h2>
+    <div class="section-text-box content has-text-justified">
+      <p>
+        The benchmark evaluates lightweight temporal models for both frame-wise understanding and clip-level recognition. These settings test whether privacy-preserving motion features are sufficient for recognizing pole trick structure.
+      </p>
+    </div>
+
+    <img src="./static/images/overview-pipeline.png"
+         alt="Overview of the Pole-Arina processing and model pipeline."
+         class="section-media model-overview">
+
+    <div class="columns is-variable is-5 feature-grid">
+      <div class="column">
+        <div class="feature-panel">
+          <h3 class="title is-4 feature-title">Per Frame</h3>
+          <div class="section-text-box content">
+            <p>
+              Per-frame models predict temporal labels at each point in a clip, supporting fine-grained phase analysis and coaching-oriented feedback.
+            </p>
+          </div>
+          <img src="./static/images/coaching-interface.png"
+               alt="Frame-level coaching interface with pose quality overlays."
+               class="section-media tiny-model-media">
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="feature-panel">
+          <h3 class="title is-4 feature-title">Per Video</h3>
+          <div class="section-text-box content">
+            <p>
+              Per-video models assign one trick label to the full clip by aggregating evidence across the complete motion sequence.
+            </p>
+          </div>
+          <img src="./static/images/videos-per-trick.png"
+               alt="Bar chart showing the number of videos for each pole trick class."
+               class="section-media tiny-model-media">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Conclusion</h2>
+    <div class="section-text-box content has-text-justified">
+      <p>
+        Pole-Arina introduces a focused benchmark for pole sports that keeps privacy central while preserving the motion cues needed for recognition and feedback. The dataset, baselines, and analysis tools are intended to support future work on interpretable, privacy-aware sports vision.
+      </p>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">

@@ -159,7 +159,55 @@ body {
   display: block;
   width: 100%;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 8px;
+}
+
+.paper-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.section-text-box {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.15rem;
+}
+
+.section-text-box p:last-child {
+  margin-bottom: 0;
+}
+
+.feature-grid {
+  align-items: stretch;
+  margin-top: 0.25rem;
+}
+
+.feature-panel {
+  height: 100%;
+}
+
+.feature-title {
+  margin-bottom: 1rem !important;
+  text-align: center;
+}
+
+.feature-media {
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  object-fit: contain;
+}
+
+.model-overview {
+  margin-bottom: 2rem;
+}
+
+.tiny-model-media {
+  aspect-ratio: 4 / 3;
+  background: #fff;
+  height: 240px;
+  object-fit: contain;
 }
 
 

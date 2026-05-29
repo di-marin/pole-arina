@@ -1,35 +1,41 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
+const INTERP_BASE = "./static/interpolation/stacked";
+const NUM_INTERP_FRAMES = 240;
 
-var interp_images = [];
+const interpImages = [];
 function preloadInterpolationImages() {
-  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
-    interp_images[i] = new Image();
-    interp_images[i].src = path;
+  for (let i = 0; i < NUM_INTERP_FRAMES; i++) {
+    const path = INTERP_BASE + "/" + String(i).padStart(6, "0") + ".jpg";
+    interpImages[i] = new Image();
+    interpImages[i].src = path;
   }
 }
 
 function setInterpolationImage(i) {
-  var image = interp_images[i];
+  const wrapper = document.getElementById("interpolation-image-wrapper");
+  const image = interpImages[i];
+
+  if (!wrapper || !image) {
+    return;
+  }
+
   image.ondragstart = function() { return false; };
   image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper').empty().append(image);
+  wrapper.replaceChildren(image);
 }
 
 
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function() {
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
-
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".navbar-burger").forEach(function(burger) {
+      burger.addEventListener("click", function() {
+        document.querySelectorAll(".navbar-burger, .navbar-menu").forEach(function(element) {
+          element.classList.toggle("is-active");
+        });
+      });
     });
 
-    var options = {
+    const options = {
 			slidesToScroll: 1,
 			slidesToShow: 3,
 			loop: true,
@@ -39,21 +45,21 @@ $(document).ready(function() {
     }
 
 		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    const carousels = window.bulmaCarousel ? bulmaCarousel.attach(".carousel", options) : [];
 
     // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
+    for(let i = 0; i < carousels.length; i++) {
     	// Add listener to  event
-    	carousels[i].on('before:show', state => {
+    	carousels[i].on("before:show", state => {
     		console.log(state);
     	});
     }
 
     // Access to bulmaCarousel instance of an element
-    var element = document.querySelector('#my-element');
+    const element = document.querySelector("#my-element");
     if (element && element.bulmaCarousel) {
     	// bulmaCarousel instance is available as element.bulmaCarousel
-    	element.bulmaCarousel.on('before-show', function(state) {
+    	element.bulmaCarousel.on("before-show", function(state) {
     		console.log(state);
     	});
     }
@@ -65,14 +71,20 @@ $(document).ready(function() {
         player.currentTime = player.duration / 100 * this.value;
       })
     }, false);*/
-    preloadInterpolationImages();
 
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
-    });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
+    const interpolationSlider = document.getElementById("interpolation-slider");
+    const interpolationWrapper = document.getElementById("interpolation-image-wrapper");
+    if (interpolationSlider && interpolationWrapper) {
+      preloadInterpolationImages();
+      interpolationSlider.addEventListener("input", function() {
+        setInterpolationImage(this.value);
+      });
+      interpolationSlider.max = NUM_INTERP_FRAMES - 1;
+      setInterpolationImage(0);
+    }
 
-    bulmaSlider.attach();
+    if (window.bulmaSlider) {
+      bulmaSlider.attach();
+    }
 
 })
