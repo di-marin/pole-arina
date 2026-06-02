@@ -9,11 +9,37 @@
   <meta name="keywords" content="Pole-Arina, pole dance, action recognition, privacy-preserving vision, skeletons, optical flow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks</title>
+  <link rel="icon" href="./static/images/polearina.png" type="image/png">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <style>
+    .section-separator {
+      margin: 0.25rem auto 0;
+      border: 0;
+      border-top: 1px solid #d7dde8;
+    }
+
+    .section {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .abstract-section {
+      padding-top: 2.75rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .abstract-section + .paper-section {
+      padding-top: 1.25rem;
+    }
+
+    .hero.teaser .hero-body {
+      padding-bottom: 1.5rem;
+    }
+  </style>
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script defer src="./static/js/bulma-carousel.min.js"></script>
@@ -89,24 +115,25 @@
   </div>
 </section>
 
+<div class="container is-max-desktop">
+  <hr class="section-separator">
+</div>
 
-<section class="section">
+<section class="section abstract-section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered" id="abstract">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Computer vision for sports lacks datasets and models that target pole sports, an activity marked by self-occlusion, body inversions, and sustained contact with the pole. We address this gap by introducing <b>Pole-Arina</b>, a curated, privacy-preserving dataset for markerless analysis of static pole tricks.
-          </p>
-          <p>
-            The collection comprises 836 videos from 58 participants and provides two appearance-suppressing modalities derived from the recordings: pose skeleton sequences (2D joints) and dense optical flow. We annotate each clip with both per-video trick labels and per-frame labels that capture temporal structure, enabling evaluation of clip-level and frame-wise recognition under privacy constraints.
-          </p>
-          <p>
-            As reference baselines, we benchmark lightweight temporal models across all benchmark settings and analyze common confusions and imbalance effects. In addition, we provide a geometry-aware analysis module that measures trick-specific body orientation, joint alignments, and proximities to produce interpretable overlays and actionable feedback.
-          </p>
-        </div>
+    <div class="has-text-centered" id="abstract">
+      <h2 class="title is-3">Abstract</h2>
+      <div class="section-text-box content has-text-justified">
+        <p>
+          Computer vision for sports lacks datasets and models that target pole sports, an activity marked by self-occlusion, body inversions, and sustained contact with the pole. We address this gap by introducing <b>Pole-Arina</b>, a curated, privacy-preserving dataset for markerless analysis of static pole tricks.
+        </p>
+        <p>
+          The collection comprises <b>836 videos</b> from <b> 58 participants</b> and provides two appearance-suppressing modalities derived from the recordings: <i>pose skeleton sequences (2D joints)</i> and <i>dense optical flow</i>. We annotate each clip with both <b> per-video trick labels</b> and <b>per-frame labels</b> that capture temporal structure, enabling evaluation of clip-level and frame-wise recognition under privacy constraints.
+        </p>
+        <p>
+          As reference baselines, we benchmark lightweight temporal models across all benchmark settings and analyze common confusions and imbalance effects. In addition, we provide a geometry-aware analysis module that measures trick-specific body orientation, joint alignments, and proximities to produce interpretable overlays and actionable feedback.
+        </p>
       </div>
     </div>
     <!--/ Abstract. -->
@@ -118,7 +145,7 @@
     <h2 class="title is-3 has-text-centered">Dataset</h2>
     <div class="section-text-box content has-text-justified">
       <p>
-        Pole-Arina collects static pole trick videos and releases privacy-preserving representations for analysis. Instead of relying on identifiable RGB frames, the dataset supports two motion-focused views: 2D pose skeletons and dense optical flow.
+        We collected static pole trick videos and release privacy-preserving representations for analysis. Instead of relying on identifiable RGB frames, the dataset supports two motion-focused formats: 2D pose skeletons, with four different variants corresponding to different extractors, and dense optical flow.
       </p>
     </div>
 
@@ -128,7 +155,7 @@
           <h3 class="title is-4 feature-title">Skeleton</h3>
           <div class="section-text-box content">
             <p>
-              Skeleton sequences encode body configuration over time with 2D joints, making the trick structure visible while suppressing appearance details.
+              Skeleton sequences encode body configuration over time with 2D joints using <a href="https://github.com/google-ai-edge/mediapipe">MediaPipe</a>, making the trick structure visible while suppressing appearance details.
             </p>
           </div>
           <img src="./static/images/skeleton.gif"
@@ -159,7 +186,10 @@
     <h2 class="title is-3 has-text-centered">Models</h2>
     <div class="section-text-box content has-text-justified">
       <p>
-        The benchmark evaluates lightweight temporal models for both frame-wise understanding and clip-level recognition. These settings test whether privacy-preserving motion features are sufficient for recognizing pole trick structure.
+        We evaluate lightweight temporal models (GRU) for both frame-wise understanding and clip-level action recognition. These settings test whether privacy-preserving motion features are sufficient for recognizing pole trick structure.
+      </p>
+      <p>
+        Our results show that these models achieve good accuracy, with skeleton-based inputs performing better than optical flow as expected, while visually similar trick classes remain the main source of confusion.
       </p>
     </div>
 
@@ -202,7 +232,7 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{polearina2026,
+    <pre><code>@inproceedings{marin2026polearina,
   title     = {Pole-Arina: A Privacy-Preserving Dataset and Benchmark for Static Pole Tricks},
   author    = {Diana Marin and Katharina Scheucher and Peter Kán},
   booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
